@@ -1,9 +1,19 @@
 dxa_inc = include_directories('.')
 dxa_src = files('dxa.c')
 
+dxlib_deps = [
+  dependency('liblzma'),
+]
+
 install_headers('dxa.h')
 
-dxa_target = shared_library('dexarchive', dxa_src, include_directories: dxa_inc, install: true)
+dxa_target = shared_library(
+  'dexarchive',
+  dxa_src,
+  dependencies: dxlib_deps,
+  include_directories: dxa_inc,
+  install: true,
+)
 
 pkg = import('pkgconfig')
 pkg.generate(dxa_target, name: 'dexarchive', description: '', version: '0.1.0')
