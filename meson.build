@@ -8,7 +8,7 @@ project(
     'buildtype=debug',
     'b_ndebug=if-release',
     'default_library=shared',
-    # 'werror=true',       # uncomment once warnings are clean
+    'prefix=' + meson.project_source_root() + '/dist',
   ],
 )
 
