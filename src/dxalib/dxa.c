@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct DexArchive {
+struct DxaArchive {
   FILE    *file_ptr;
   uint32_t version;
   uint64_t toc_offset;
@@ -17,13 +17,13 @@ struct DxaArchiveHeader {
   uint64_t toc_offset;
 };
 
-DexaCtx *dexa_open(const char *filepath) {
+DxaCtx *dxa_open(const char *filepath) {
 
   FILE *f = fopen(filepath, "r+b");
   if (!f)
     return NULL;
 
-  struct DexArchive *ctx = malloc(sizeof(struct DexArchive));
+  struct DxaArchive *ctx = malloc(sizeof(struct DxaArchive));
 
   struct DxaArchiveHeader header;
 
@@ -42,7 +42,7 @@ DexaCtx *dexa_open(const char *filepath) {
   return ctx;
 }
 
-int dexa_new(const char *filepath) {
+int dxa_new(const char *filepath) {
 
   FILE *f = fopen(filepath, "wb");
   if (!f)
@@ -63,9 +63,9 @@ int dexa_new(const char *filepath) {
   return 0;
 }
 
-uint32_t dexa_get_version(DexaCtx *ctx) { return ctx->version; }
+uint32_t dxa_get_version(DxaCtx *ctx) { return ctx->version; }
 
-void dexa_close(DexaCtx *ctx) {
+void dxa_close(DxaCtx *ctx) {
   if (ctx) {
     if (ctx->file_ptr)
       fclose(ctx->file_ptr);

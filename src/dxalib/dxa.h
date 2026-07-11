@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-typedef struct DexArchive DexaCtx;
+typedef struct DxaArchive DxaCtx;
 
 typedef struct {
   uint32_t asset_id;
@@ -14,9 +14,9 @@ typedef struct {
   uint64_t uncompressed_size;
 } DxaAssetEntry;
 
-int      dexa_new(const char *filepath);
-DexaCtx *dexa_open(const char *filepath);
-void     dexa_close(DexaCtx *ctx);
-uint32_t dexa_get_version(DexaCtx *ctx);
+int      dxa_new(const char *filepath);
+DxaCtx  *dxa_open(const char *filepath);
+void     dxa_close(DxaCtx *ctx);
+uint32_t dxa_get_version(DxaCtx *ctx);
 
 #endif /* LIB_DXA_H */
